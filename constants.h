@@ -1,3 +1,6 @@
+#ifndef CONSTANTS_H
+#define CONSTANTS_H
+
 #include <string>
 using namespace std;
 
@@ -27,7 +30,7 @@ public:
         return "/status";
     }
     static string statPath(){
-        return "stat";
+        return "/stat";
     }
     static string upTimePath(){
         return "uptime";
@@ -39,3 +42,5 @@ public:
         return "version";
     }
 };
+
+#endif

@@ -7,12 +7,13 @@
 #include <time.h>
 #include <sstream>
 #include <iomanip>
+#include "ProcessParser.cpp"
 #include "util.h"
 #include "SysInfo.h"
 #include "ProcessContainer.h"
 
-using namespace std;
 
+using namespace std;
 
 char* getCString(std::string str){
     char * cstr = new char [str.length()+1];
@@ -61,19 +62,19 @@ void getProcessListToConsole(std::vector<string> processes,WINDOW* win){
 }
 void printMain(SysInfo sys,ProcessContainer procs){
 	initscr();			/* Start curses mode 		  */
-    noecho(); // not printing input values
-    cbreak(); // Terminating on classic ctrl + c
-    start_color(); // Enabling color change of text
-    int yMax,xMax;
-    getmaxyx(stdscr,yMax,xMax); // getting size of window measured in lines and columns(column one char length)
+  noecho(); // not printing input values
+  cbreak(); // Terminating on classic ctrl + c
+  start_color(); // Enabling color change of text
+  int yMax,xMax;
+  getmaxyx(stdscr,yMax,xMax); // getting size of window measured in lines and columns(column one char length)
 	WINDOW *sys_win = newwin(17,xMax-1,0,0);
 	WINDOW *proc_win = newwin(15,xMax-1,18,0);
 
 
-    init_pair(1,COLOR_BLUE,COLOR_BLACK);
-    init_pair(2,COLOR_GREEN,COLOR_BLACK);
-    int counter = 0;
-    while(1){
+  init_pair(1,COLOR_BLUE,COLOR_BLACK);
+  init_pair(2,COLOR_GREEN,COLOR_BLACK);
+  int counter = 0;
+  while(1){
     box(sys_win,0,0);
     box (proc_win,0,0);
     procs.refreshList();
@@ -90,9 +91,10 @@ void printMain(SysInfo sys,ProcessContainer procs){
     else {
         counter ++;
     }
-    }
+  }
 	endwin();
 }
+
 int main( int   argc, char *argv[] )
 {
  //Object which contains list of current processes, Container for Process Class

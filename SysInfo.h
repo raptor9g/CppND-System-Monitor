@@ -1,7 +1,11 @@
+#ifndef SYS_INFO_H
+#define SYS_INFO_H
+
 #include <string>
 #include <iostream>
 #include <vector>
 #include "ProcessParser.h"
+
 class SysInfo {
 private:
     std::vector<std::string> lastCpuStats;
@@ -89,7 +93,7 @@ std::vector<std::string> SysInfo::getCoresStats()const{
     std::vector<std::string> result= std::vector<std::string>();
     for(int i=0;i<this->coresStats.size();i++){
         std::string temp =("cpu" + to_string(i) +": ");
-        float check;
+        float check = 0;
         if(!this->coresStats[i].empty())
             check = stof(this->coresStats[i]);
         if(!check || this->coresStats[i] == "nan"){
@@ -124,3 +128,5 @@ std::string SysInfo::getThreads()const {
 std::string SysInfo::getOSName()const {
     return this->OSname;
 }
+
+#endif

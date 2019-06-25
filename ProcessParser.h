@@ -1,3 +1,6 @@
+#ifndef PROCESS_PARSER_H
+#define PROCESS_PARSER_H
+
 #include <algorithm>
 #include <iostream>
 #include <math.h>
@@ -17,6 +20,7 @@
 #include <time.h>
 #include <unistd.h>
 #include "constants.h"
+#include "util.h"
 
 
 using namespace std;
@@ -40,8 +44,11 @@ private:
     static int getTotalNumberOfProcesses();
     static int getNumberOfRunningProcesses();
     static string getOSName();
+    static float getSysIdleCpuTime(std::vector<std::string>values);
+    static float getSysActiveCpuTime(std::vector<std::string> values);
     static std::string PrintCpuStats(std::vector<std::string> values1, std::vector<std::string>values2);
     static bool isPidExisting(string pid);
 };
 
 // TODO: Define all of the above functions below:
+#endif
